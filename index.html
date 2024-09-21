@@ -1,0 +1,262 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Foo Lang</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        <style>
+            * {
+                margin: 0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+
+            :root {
+                --b-1: hsl(  0,   0%, 15%);
+                --f-1: hsl(  0,   0%,  0%);
+                --f-2: hsl(  0,   0%, 80%);
+                --c-1: hsl(240, 100%, 75%);
+                --c-2: hsl(240,  75%, 75%);
+
+                --content-width: 400px;
+                --navigation-width: 120px;
+            }
+
+            body {
+                color: var(--f-1);
+                font-family: "Fira Sans", sans-serif;
+            }
+
+            code {
+                white-space: pre-line;
+                padding: 2px 4px 2px 4px;
+            }
+
+            p {
+                margin: 6px 0px 12px 0px;
+            }
+
+            h1 {
+                margin: 18px 0px;
+                color: var(--c-1);
+            }
+
+            a {
+                color: var(--c-2);
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            .main-section, .content {
+                width: 80%;
+                max-width: var(--content-width);
+                margin: auto;
+            }
+
+            .main-section > code {
+                display: block;
+                border: 1px solid hsla(0, 0%, 50%, 0.5);
+                border-radius: 4px;
+                margin: 12px 0px 24px 0px;
+                padding: 4px 6px 6px 6px;
+            }
+
+            .dark {
+                color: var(--f-2);
+                background: var(--b-1);
+            }
+
+            #navbar {
+                width: var(--navigation-width);
+                left: calc(50% - var(--content-width) / 2 - var(--navigation-width));
+                position: fixed;
+            }
+
+            #navbar > header > h1 {
+                margin-top: 0px;
+            }
+
+            @media only screen and (max-width: 680px) {
+                #navbar {
+                    left: 0px;
+                    width: 80%;
+                    max-width: var(--content-width);
+                    position: relative;
+                }
+            }
+
+            #light-dark-button {
+                position: fixed;
+                right: 8px;
+                bottom: 8px;
+                border: 1px solid hsla(0, 0%, 50%, 0.5);
+                border-radius: 8px;
+                padding: 4px 4px 6px 4px;
+                background: transparent;
+                font-size: 16pt;
+            }
+
+            #light-dark-button:hover {
+                cursor: pointer;
+            }
+        </style>
+    </head>
+    <body>
+        <button id="light-dark-button"
+                onclick="
+                if (!document.body.classList.contains('dark')) {
+                    this.innerHTML = '☀️ ';
+                    document.body.classList.add('dark');
+                } else {
+                    this.innerHTML = '🌑';
+                    document.body.classList.remove('dark');
+                }
+                ">🌑</button>
+        <main id="main-doc">
+            <header class="content">
+                <h1>Foo Programming Language</h1>
+            </header>
+            <!-- navigation -->
+            <nav id="navbar" class="content">
+                <header>
+                    <h1>Index</h1>
+                </header>
+                <ul>
+                    <li><a class="nav-link" href="#hello">Hello</a></li>
+                    <li><a class="nav-link" href="#types">Types</a></li>
+                    <li><a class="nav-link" href="#variables">Variables</a></li>
+                    <li><a class="nav-link" href="#functions">Functions</a></li>
+                    <li><a class="nav-link" href="#conditions">Conditions</a></li>
+                </ul>
+            </nav>
+            <!-- hello -->
+            <section id="hello" class="main-section">
+                <header>
+                    <h1>Hello</h1>
+                </header>
+                <p>
+                    Foo is a fictional programming language aiming to be
+                    the best one ever made.
+                </p>
+                <p>
+                    To achive a optimal performance there is no question
+                    about Foo being a compiled language.
+                </p>
+                <p>
+                    The memory managment is still under consideration since is
+                    a delicated topic which strongly defines how a programming
+                    language is percieved and used.
+                </p>
+            </section>
+            <!-- types -->
+            <section id="types" class="main-section">
+                <header>
+                    <h1>Types</h1>
+                </header>
+                <p>
+                    Foo is a strongly typed language, here are the basic types
+                    we got in the language.
+                </p>
+                <ul>
+                    <li>i32</li>
+                    <li>i64</li>
+                    <li>f32</li>
+                    <li>f64</li>
+                    <li>bool</li>
+                    <li>list</li>
+                    <li>string</li>
+                </ul>
+            </section>
+            <!-- variables -->
+            <section id="variables" class="main-section">
+                <header>
+                    <h1>Variables</h1>
+                </header>
+                <p>
+                    For defining variables we want something simple,
+                    that's why was choosed the format
+                    <code>name : type = value</code> for variables
+                    and <code> name : type : value</code> for constants.
+                </p>
+                <p>
+                    Here the example of how define a variable.
+                </p>
+                <code>foo := 1
+                    bar : i32 = 1
+                </code>
+                <p>
+                    And here the example of how define a constant.
+                </p>
+                <code>foo :: 1
+                    bar : i32 : 1 
+                </code>
+            </section>
+            <!-- functions -->
+            <section id="functions" class="main-section">
+                <header>
+                    <h1>Functions</h1>
+                </header>
+                <p>
+                    Functions tries to follow the same syntax
+                    rules as constants, except we not require
+                    the second <code>:</code> due to readability.
+                </p>
+                <p>
+                    Here is how to define a function without
+                    arguments and return value.
+                </p>
+                <code>do_nothing : () {
+                    &emsp;&emsp;return;
+                    }
+                </code>
+                <p>
+                    And here is how to define function with arguments
+                    and a return value.
+                </p>
+                <code>sum : (a i32, b i32) i32 {
+                    &emsp;&emsp;return a + b;
+                    }
+                </code>
+            </section>
+            <!-- conditions -->
+            <section id="conditions" class="main-section">
+                <header>
+                    <h1>Conditions</h1>
+                </header>
+                <p>
+                    There are no much to talk about conditions,
+                    they are C-like conditions without parenthesis.
+                </p>
+                <code>condition :: true
+                    if condition {
+                    &emsp;&emsp;// ...
+                    }
+                </code>
+                <code>condition :: true
+                    if condition {
+                    &emsp;&emsp;// ...
+                    } else if {
+                    &emsp;&emsp;// ...
+                    } else {
+                    &emsp;&emsp;// ...
+                    }
+                </code>
+                <p>
+                    We should as well have support for pattern
+                    match conditions, and we do so by using the
+                    <code>case</code> keyword.
+                </p>
+                <code>condition :: true
+                    case condition {
+                    &emsp;&emsp;true { //* ... *// }
+                    &emsp;&emsp;false { //* ... *// }
+                    }
+                </code>
+            </section>
+        </main>
+    </body>
+</html>
